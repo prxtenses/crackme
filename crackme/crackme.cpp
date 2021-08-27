@@ -43,12 +43,10 @@ int main()
     cout << dye::grey(xorstr("-<")) << endl;
 
     // Login system
-    if (input == password) {
+    if (input == password)
         cout << dye::green("\n[v] ") << "Congratulations you made it! (The code means: 'Persistence is the way to success')\n" << endl;
-    }
-    else {
+    else 
         cout << dye::red("\n[x] ") << "Wrong one!\n" << endl;
-    }
 
     system("pause");
 }

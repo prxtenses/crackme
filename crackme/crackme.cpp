@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    //--//
+    //-- Randomize Title --//
     int a;
     srand(time(nullptr));
     string title = "";
@@ -15,23 +15,30 @@ int main()
     {
         a = rand() % 2;
         if (a == 0)
-            title += rand() % 26 + 'a';//generates letters
+            title += rand() % 26 + 'a';
         else
-            title += to_string(rand() % 10);//generates numbers
+            title += to_string(rand() % 10);
     }
 
     SetConsoleTitleA(title.c_str());
-    //--//
+    //-- Randomize Title --//
 
-    //Let define this string as password but it wont change anything cuz we're using xorstr
-    const string password = xorstr("cGVyc2lzdGVuY2UgaXMgdGhlIHdheSB0byBzdWNjZXNz");
+    // Password / 3
+    const string form1 = xorstr("7b974f276d811671fb28b");
+    const string form2 = xorstr("76820fd8f22164e7154ec");
+    const string form3 = xorstr("1a02f0ba9c9920ecb7e74");
+
+    // We organize all forms into 1
+    const string password = form1 + form2 + form3;
+
+    // Define input
     string input;
 
     // Simple text
-    cout << dye::aqua(xorstr("[!] ")) << xorstr("Hello, this is the simplest crackme i've done! Good luck!") << endl;
+    cout << dye::aqua(xorstr("[!] ")) << xorstr("Hello, this is the simplest crackme i've done! Good luck! - Sonka") << endl;
 
     // Password form
-    cout << dye::yellow(xorstr("[?] ")) << xorstr("Please leave a password:\n") << endl;
+    cout << dye::yellow(xorstr("[-] ")) << xorstr("Please leave a password:\n") << endl;
 
     // Makes this more beautiful
     cout << dye::grey(xorstr("-<")) << endl;
@@ -43,10 +50,13 @@ int main()
     cout << dye::grey(xorstr("-<")) << endl;
 
     // Login system
-    if (input == password)
-        cout << dye::green("\n[v] ") << "Congratulations you made it! (The code means: 'Persistence is the way to success')\n" << endl;
-    else 
-        cout << dye::red("\n[x] ") << "Wrong one!\n" << endl;
+    if (input == password) {
+        cout << dye::green(xorstr("\n[v] ")) << xorstr("Congratulations you made it! (The code means: 'Persistence is the way to success')\n") << endl;
+    }
+    else {
+        cout << dye::red(xorstr("\n[x] ")) << xorstr("Wrong one!\n") << endl;
+    }
 
+    // Pause
     system("pause");
 }
